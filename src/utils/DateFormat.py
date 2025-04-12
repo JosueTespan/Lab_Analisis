@@ -1,14 +1,14 @@
 import datetime
 
-class DateFormat():
+class DateFormat:
     @classmethod
-    def convert_date(cls, date):
-        # Si el argumento ya es un objeto datetime.date o datetime.datetime
-        if isinstance(date, (datetime.date, datetime.datetime)):
-            date_obj = date
-        else:
-            # Parsear la cadena de fecha (formato esperado: 'YYYY-MM-DD')
-            date_obj = datetime.datetime.strptime(date, '%d/%m/%Y')
-        
-        # Retornar en el nuevo formato
-        return date_obj.strftime('%d/%m/%Y')
+    def convert_date(cls, date_str):
+        if isinstance(date_str, (datetime.date, datetime.datetime)):
+            return date_str
+        try:
+            return datetime.datetime.strptime(date_str, '%Y-%m-%d').date()
+        except ValueError:
+            try:
+                return datetime.datetime.strptime(date_str, '%d/%m/%Y').date()
+            except ValueError:
+                raise ValueError(f"Formato de fecha no válido: {date_str}")

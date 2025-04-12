@@ -1,14 +1,14 @@
 from utils.DateFormat import DateFormat
 
 class Contacto:
-    def __init__(self, idcontacto: str, nombre: str, apellido: str, 
-                 idcategoria: str, idempresa: str, fecha_nacimiento: str):
+    def __init__(self, idcontacto: str = None, nombre: str = "", apellido: str = "", 
+                 idcategoria: str = "", idempresa: str = "", fecha_nacimiento: str = ""):
         self.idcontacto = idcontacto
         self.nombre = nombre
         self.apellido = apellido
         self.idcategoria = idcategoria
         self.idempresa = idempresa
-        self.fecha_nacimiento = DateFormat.convert_date(fecha_nacimiento)  # Ya devuelve str
+        self.fecha_nacimiento = DateFormat.convert_date(fecha_nacimiento)
 
     def to_JSON(self):
         return {
@@ -17,6 +17,7 @@ class Contacto:
             "apellido": self.apellido,
             "idcategoria": self.idcategoria,
             "idempresa": self.idempresa,
-            "fecha_nacimiento": self.fecha_nacimiento  # No le hagas strftime aquí
+            "fecha_nacimiento": self.fecha_nacimiento.strftime('%d/%m/%Y')
         }
+
 
