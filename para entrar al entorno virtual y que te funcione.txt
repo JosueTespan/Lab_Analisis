@@ -1,0 +1,11 @@
+primero abrir la terminal en visual y pegar esto
+pip install Flask Flask-Cors psycopg2 psycopg2-binary frozenlist python-decouple python-dotenv requests requests-toolbelt setuptools uvicorn wheel yarl twilio typing_extensions
+
+luego esto nos creara una carpeta con el nombre “env”
+python -m virtualenv env
+
+para iniciar  el entorno virtual 
+.\env\Scripts\activate
+
+para ejecutar el proyecto 
+python ./src/app.py
